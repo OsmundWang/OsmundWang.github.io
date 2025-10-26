@@ -1,7 +1,209 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ziao Wang — Free‑space Optical Computing & AI</title>
+  <meta name="description" content="Ziao Wang — PhD candidate at ENS–PSL (Laboratoire Kastler Brossel), building large-scale optical–ML systems.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/style.css">
+  <meta property="og:title" content="Ziao Wang — Free‑space Optical Computing & AI">
+  <meta property="og:description" content="PhD candidate at ENS–PSL (LKB). Optics × Machine Learning.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#111827">
+</head>
 <body>
-<h1>Welcome to my website</h1>
-<p>大脑斧小兔叽乐园</p>
+  <nav class="nav">
+    <div class="nav-inner container">
+      <a class="brand" href="#top">
+        <img src="assets/favicon.svg" alt="ZW logo"><span>Ziao Wang</span>
+      </a>
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#pubs">Publications</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top" class="container">
+    <section class="hero">
+      <div class="card">
+        <span class="tag">Free-space Optical Computing · AI</span>
+        <h1>Hello, I'm Ziao Wang.</h1>
+        <p>
+          Last-year PhD candidate at ENS–PSL (Laboratoire Kastler Brossel, CNRS) building large-scale
+          <strong>optical–ML</strong> systems and exploring <strong>Physics↔AI</strong> co-design.
+        </p>
+        <div class="badges" style="margin-top:14px;">
+          <span class="badge">Optical Neural Networks</span>
+          <span class="badge">Transformers</span>
+          <span class="badge">Deep Learning Systems</span>
+          <span class="badge">Statistical Physics</span>
+        </div>
+        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap">
+          <a class="btn primary" href="mailto:ziao.yu.wang@gmail.com">Email</a>
+          <a class="btn" href="assets/CV_Ziao_Wang.pdf" target="_blank" rel="noopener">Download CV</a>
+          <a class="btn" href="#pubs">Publications</a>
+        </div>
+        <p class="small" style="margin-top:10px">Based in Paris, France.</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <h3>Highlights</h3>
+          <ul>
+            <li>Hardware-in-the-loop training of large Transformers with an optical processor (ODFA).</li>
+            <li>Explored compute scaling laws: energy/throughput merits of optical computing.</li>
+            <li>Best Poster Award at MLP 2024; Nature (main) under review.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>At a glance</h3>
+          <p><strong>Email:</strong> <a href="mailto:ziao.yu.wang@gmail.com">ziao.yu.wang@gmail.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+33752052188">+33 7 52 05 21 88</a></p>
+          <p><strong>Languages:</strong> English (Advanced), Mandarin (Native)</p>
+          <p class="small">GitHub/Google Scholar links can be added later.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h2>About</h2>
+      <div class="card">
+        <p>
+          I bridge theory and practice across optics, machine learning, and statistical physics, with a focus on
+          <em>plug‑and‑play optical learning systems</em> that scale to modern architectures (Transformers, diffusion models).
+        </p>
+      </div>
+    </section>
+
+    <section id="research" class="section">
+      <h2>Research</h2>
+      <div class="grid">
+        <div class="item">
+          <h3>Large Transformer Training with Optics surpassing GPU</h3>
+          <p class="meta">Laboratoire Kastler Brossel, CNRS · Paris · Oct. 2023 – Present</p>
+          <ul>
+            <li>Hardware‑in‑the‑loop pipeline training large Transformer families via ODFA across language, vision, and diffusion.</li>
+            <li>Instrumented C++/PyTorch/DeepSpeed workflows and measured scaling laws.</li>
+            <li>First‑author preprint under review at <em>Nature</em>; Best Poster (MLP 2024).</li>
+          </ul>
+        </div>
+        <div class="item">
+          <h3>Statistical‑Physics Framework for Optical RBMs</h3>
+          <p class="meta">Laboratoire de Physique de l’ENS · Paris · Apr. 2023 – Aug. 2023</p>
+          <ul>
+            <li>Energy-based modeling with the replica method; links to Ising models.</li>
+            <li>Monte‑Carlo simulations of learning dynamics and phases.</li>
+          </ul>
+        </div>
+        <div class="item">
+          <h3>Reconfigurable Optical Neural Nets at Scale</h3>
+          <p class="meta">LKB (with Cornell) · Paris · Feb. 2022 – May 2024</p>
+          <ul>
+            <li>Designed large‑scale, reconfigurable ONNs; performed in‑situ architecture search.</li>
+            <li>Physics‑Aware Training with measured non‑idealities for robustness.</li>
+          </ul>
+        </div>
+        <div class="item">
+          <h3>Bayesian Evaluation (BNN) for Physics‑Based Data</h3>
+          <p class="meta">Peking University · Beijing · Oct. 2018 – Aug. 2021</p>
+          <ul>
+            <li>BNNs with UQ for incomplete fission‑product yields; architecture redesign to enforce physicality.</li>
+            <li>Physics‑aware data fusion across noisy/divergent datasets.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="pubs" class="section">
+      <h2>Publications</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Preprints / Under Review</h3>
+          <ul class="list">
+            <li>
+              <strong>Streamlined optical training of large‑scale modern deep learning architectures with direct feedback alignment</strong> (2024, under review at <em>Nature</em>).<br>
+              Z.‑A. Wang, K. Müller, …, S. Gigan.
+            </li>
+            <li>
+              <strong>Architecture‑Reconfigurable Deep Optical Random Neural Network</strong> (2025, under review).<br>
+              Z.‑A. Wang, F. Xia, L. Wright, …, P. McMahon, S. Gigan.
+            </li>
+            <li>
+              <strong>Training deep physical neural networks with local physical information bottlenecks</strong> (2025, under review).<br>
+              Z.‑A. Wang, H. Wang, …, S. Gigan, Q. Liu.
+            </li>
+            <li>
+              <strong>Optical computing with spectrally multiplexed features in complex media</strong> (2025, under review).<br>
+              X. Dong, …, Z.‑A. Wang, N. He, S. Gigan.
+            </li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Journal Articles</h3>
+          <ul class="list">
+            <li>Bayesian approach to heterogeneous data fusion of imperfect fission yields. <em>Phys. Rev. C</em> 106, L021304 (2022).</li>
+            <li>Optimizing multilayer Bayesian neural networks for evaluation of fission yields. <em>Phys. Rev. C</em> 104, 064608 (2021).</li>
+            <li>Bayesian evaluation of charge yields of fission fragments of <em>239U</em>. <em>Phys. Rev. C</em> 103, 034621 (2021).</li>
+            <li>Bayesian evaluation of incomplete fission yields. <em>Phys. Rev. Lett.</em> 123, 122501 (2019).</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Conference Proceedings</h3>
+          <ul class="list">
+            <li>Optical additive kernel approximation using broadband scattering in complex media. <em>Proc. SPIE</em> PC13375, PC133750K (2025). (X. Dong, F. Xia, Y. Baek, Z.‑A. Wang, S. Gigan)</li>
+            <li>Hardware‑efficient large‑scale reconfigurable ONN with backpropagation. <em>Proc. SPIE</em> 12438, 124380Z (2023). (Z.‑A. Wang, F. Xia, L. Wright, …, P. McMahon, S. Gigan)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <h2>Education & Skills</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Education</h3>
+          <ul class="list">
+            <li><strong>Laboratoire Kastler Brossel</strong> — PhD Track (2nd Stage), 2023 – Oct. 2026. Supervisor: Prof. Sylvain Gigan.</li>
+            <li><strong>École Normale Supérieure, Paris</strong> — PhD Track (1st Stage, Top 2), 2021 – 2023. ICFP (Quantum).</li>
+            <li><strong>Peking University</strong> — B.S. Physics (Diploma of Weiming, Top 5) & B.S. Economics, 2016 – 2021.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Skills</h3>
+          <div class="badges">
+            <span class="badge">Machine Learning</span>
+            <span class="badge">Optical Engineering</span>
+            <span class="badge">Statistical Modelling</span>
+            <span class="badge">Algorithm Development</span>
+            <span class="badge">Data Analysis</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <div class="card">
+        <p>For collaborations, talks, or preprint requests:</p>
+        <p><strong>Email:</strong> <a href="mailto:ziao.yu.wang@gmail.com">ziao.yu.wang@gmail.com</a> <button id="copy-email" class="btn small" data-email="ziao.yu.wang@gmail.com" style="margin-left:8px">Copy</button></p>
+        <p><strong>Paris, France</strong></p>
+        <p class="small">This site is a static page hosted on GitHub Pages. © <span id="y"></span> Ziao Wang.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container small">
+      <span>Built with plain HTML/CSS/JS · Ready for GitHub Pages · 中文内容可后续添加</span>
+    </div>
+  </footer>
+
+  <script src="assets/script.js" defer></script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
