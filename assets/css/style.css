@@ -1,319 +1,157 @@
-/* =========================================================
-   Global styles & utilities (beyond Tailwind)
-   ========================================================= */
-
+/* Base Setup */
 body {
-  background-color: #0c0a09;
-  color: #e7e5e4;
-  overflow-x: hidden;
-  cursor: none; /* Custom cursor on desktop */
+    background-color: #0c0a09;
+    color: #e7e5e4;
+    overflow-x: hidden;
+    cursor: none; /* Custom cursor on desktop */
 }
 
 /* Restore default cursor on touch devices */
 @media (pointer: coarse) {
-  body {
-    cursor: auto;
-  }
+    body { cursor: auto; }
 }
 
-/* Ambient background ------------------------------------------------- */
+/* --- 1. Ambient Background --- */
 .ambient-glow {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  overflow: hidden;
-  background: radial-gradient(circle at 50% 50%, #1c1917 0%, #0c0a09 100%);
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -1; overflow: hidden;
+    background: radial-gradient(circle at 50% 50%, #1c1917 0%, #0c0a09 100%);
 }
 
 .orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.25;
-  animation: blob 15s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute; border-radius: 50%;
+    filter: blur(90px); opacity: 0.25;
+    animation: blob 15s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Delay utility for orbs */
-.animation-delay-2000 {
-  animation-delay: 2s;
+@keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
 }
 
-/* Glass / blur surfaces ---------------------------------------------- */
+/* --- 2. Utilities --- */
 .glass {
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 .glass-nav {
-  background: rgba(12, 10, 9, 0.8);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    background: rgba(12, 10, 9, 0.8);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 
-/* Gradient text ------------------------------------------------------ */
 .text-gradient {
-  background: linear-gradient(135deg, #e7e5e4 0%, #a78bfa 50%, #fbbf24 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    background: linear-gradient(135deg, #e7e5e4 0%, #a78bfa 50%, #fbbf24 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* Scroll reveal system ----------------------------------------------- */
+.nav-link { position: relative; }
+.nav-item::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px;
+    background-color: #f59e0b; transition: width 0.3s ease;
+}
+.nav-item:hover::after { width: 100%; }
+
+/* --- 3. Scroll & Motion System --- */
+
+/* A. Scroll Reveal (The "Flow") */
 .reveal-scroll {
-  opacity: 0;
-  transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+    opacity: 0;
+    transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.reveal-up {
-  transform: translateY(40px);
-}
-
-.reveal-left {
-  transform: translateX(-40px);
-}
-
-.reveal-right {
-  transform: translateX(40px);
-}
-
-.reveal-scale {
-  transform: scale(0.95);
-}
+/* Variations */
+.reveal-up { transform: translateY(40px); }
+.reveal-left { transform: translateX(-40px); }
+.reveal-right { transform: translateX(40px); }
+.reveal-scale { transform: scale(0.95); }
 
 .reveal-scroll.active {
-  opacity: 1;
-  transform: translate(0) scale(1);
+    opacity: 1;
+    transform: translate(0) scale(1);
 }
 
-/* Navigation transition wiper ---------------------------------------- */
+/* B. Nav Transition (The "Cinema Wipe") */
 .page-wiper {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  display: flex;
-  flex-direction: column;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
 }
 
 .wiper-layer {
-  width: 100%;
-  height: 100%;
-  transform: translateY(100%);
-  transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1);
+    width: 100%;
+    height: 100%;
+    transform: translateY(100%);
+    transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1);
 }
 
-.wiper-1 {
-  background: #1c1917; /* Base dark layer */
-  z-index: 2;
-}
+.wiper-1 { background: #1c1917; z-index: 2; } /* Base dark layer */
+.wiper-2 { background: rgba(139, 92, 246, 0.1); backdrop-filter: blur(20px); z-index: 3; margin-top: -100vh; transition-delay: 0.1s;} /* Glass accent layer */
 
-.wiper-2 {
-  background: rgba(139, 92, 246, 0.1); /* Glass accent layer */
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  z-index: 3;
-  margin-top: -100vh;
-  transition-delay: 0.1s;
-}
-
-/* Active state for wiping IN (down) */
+/* Active state for wiping IN (Up) */
 .page-wiper.wiping-in .wiper-layer {
-  transform: translateY(0%);
+    transform: translateY(0%);
 }
 
-/* Active state for wiping OUT (up and away) */
+/* Active state for wiping OUT (Up and away) */
 .page-wiper.wiping-out .wiper-layer {
-  transform: translateY(-100%);
+    transform: translateY(-100%);
 }
 
-/* Content scale effect during Transition */
+/* Content Scale Effect during Transition */
 #main-content {
-  transition:
-    transform 0.8s cubic-bezier(0.7, 0, 0.3, 1),
-    opacity 0.4s ease,
-    filter 0.4s ease;
-  transform-origin: center top;
+    transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1), opacity 0.4s ease;
+    transform-origin: center top;
 }
-
 body.transitioning #main-content {
-  transform: scale(0.95) translateY(20px);
-  opacity: 0.6;
-  filter: blur(2px);
+    transform: scale(0.95) translateY(20px);
+    opacity: 0.6;
+    filter: blur(2px);
 }
 
-/* Scroll progress bar inside navbar --------------------------------- */
-#scroll-progress {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 2px;
-  width: 0;
-  background-image: linear-gradient(90deg, #8b5cf6, #f59e0b);
-  transition: width 0.1s linear;
+/* --- 4. Custom Cursor --- */
+.cursor-dot, .cursor-outline {
+    position: fixed; top: 0; left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%; z-index: 10000;
+    pointer-events: none; display: none;
 }
-
-/* Active nav link highlight ------------------------------------------ */
-.nav-link-active {
-  color: #fbbf24 !important; /* accentWarm */
-}
-
-/* Custom cursor ------------------------------------------------------ */
-.cursor-dot,
+.cursor-dot { width: 8px; height: 8px; background-color: #f59e0b; }
 .cursor-outline {
-  position: fixed;
-  top: 0;
-  left: 0;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  z-index: 10000;
-  pointer-events: none;
-  display: none;
+    width: 40px; height: 40px;
+    border: 1px solid rgba(245, 158, 11, 0.5);
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
 }
-
-.cursor-dot {
-  width: 8px;
-  height: 8px;
-  background-color: #f59e0b;
-}
-
-.cursor-outline {
-  width: 40px;
-  height: 40px;
-  border: 1px solid rgba(245, 158, 11, 0.5);
-  transition:
-    width 0.2s,
-    height 0.2s,
-    background-color 0.2s,
-    border-color 0.2s;
-}
-
 body.hovering .cursor-outline {
-  width: 60px;
-  height: 60px;
-  background-color: rgba(245, 158, 11, 0.1);
-  border-color: transparent;
+    width: 60px; height: 60px;
+    background-color: rgba(245, 158, 11, 0.1);
+    border-color: transparent;
 }
 
-/* Gallery cards & lightbox ------------------------------------------- */
-.gallery-card:hover .card-thumb {
-  transform: scale(1.05);
-}
-
-.gallery-card:hover .card-overlay {
-  opacity: 1;
-}
+/* --- 5. Gallery & Modal --- */
+.gallery-card:hover .card-thumb { transform: scale(1.05); }
+.gallery-card:hover .card-overlay { opacity: 1; }
 
 #lightbox-modal {
-  transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
 }
+#lightbox-modal.hidden { opacity: 0; pointer-events: none; }
+#lightbox-modal:not(.hidden) { opacity: 1; pointer-events: auto; }
 
-#lightbox-modal.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-#lightbox-modal:not(.hidden) {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* Gallery filters */
-.gallery-filter-btn-active {
-  background-color: rgba(255, 255, 255, 0.06);
-  color: #f9fafb;
-  border-color: rgba(248, 250, 252, 0.3);
-}
-
-/* Timeline line ------------------------------------------------------ */
+/* Timeline Line */
 .timeline-line::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    #8b5cf6,
-    transparent
-  );
-  opacity: 0.5;
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px;
+    background: linear-gradient(to bottom, transparent, #8b5cf6, transparent); opacity: 0.5;
 }
-
-@media (min-width: 768px) {
-  .timeline-line::before {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
-
-/* Back-to-top button ------------------------------------------------- */
-#back-to-top {
-  position: fixed;
-  right: 1.5rem;
-  bottom: 1.5rem;
-  width: 2.75rem;
-  height: 2.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(8px);
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    background-color 0.25s ease;
-}
-
-@media (min-width: 768px) {
-  #back-to-top {
-    width: 3rem;
-    height: 3rem;
-  }
-}
-
-#back-to-top.visible {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
-
-#back-to-top:hover {
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
-}
-
-/* Keyframes (for orbs & floating chips) ------------------------------ */
-@keyframes blob {
-  0% {
-    transform: translate(0px, 0px) scale(1);
-  }
-  33% {
-    transform: translate(30px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
-  }
-  100% {
-    transform: translate(0px, 0px) scale(1);
-  }
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
+@media (min-width: 768px) { .timeline-line::before { left: 50%; transform: translateX(-50%); } }
