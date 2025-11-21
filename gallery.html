@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Ziao Wang</title>
+    <meta name="description" content="Photos, snippets, and thoughts from the lab and conferences.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        dark: '#0c0a09', 
+                        card: 'rgba(255, 247, 237, 0.03)', 
+                        accent: '#8b5cf6', 
+                        accentWarm: '#f59e0b',
+                        textMuted: '#a8a29e',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="antialiased selection:bg-accent selection:text-white">
+
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+
+    <div class="page-wiper" id="page-wiper">
+        <div class="wiper-layer wiper-1"></div>
+        <div class="wiper-layer wiper-2"></div>
+    </div>
+
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center gap-2 nav-link page-transition interactable group">
+                    <span class="text-2xl font-serif font-bold text-white tracking-tight">
+                        ZW<span class="text-accentWarm">.</span>
+                    </span>
+                </a>
+
+                <div class="hidden lg:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="nav-item nav-link page-transition interactable">Home</a>
+                        <a href="index.html#about" class="nav-item nav-link anchor-scroll interactable">About</a>
+                        <a href="projects.html" class="nav-item nav-link page-transition interactable">Projects</a>
+                        <a href="gallery.html" class="nav-item nav-link page-transition interactable active-page">Gallery</a>
+                        <a href="index.html#experience" class="nav-item nav-link anchor-scroll interactable">Experience</a>
+                        <a href="index.html#contact" class="px-5 py-2.5 rounded-full border border-white/10 hover:bg-white/5 text-white transition-all text-sm font-medium nav-link anchor-scroll interactable">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="lg:hidden">
+                    <button id="mobile-menu-btn" class="text-white focus:outline-none interactable p-2">
+                        <i class="ph ph-list text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden lg:hidden glass border-t border-white/5 absolute w-full bg-dark/95 backdrop-blur-xl">
+            <div class="px-4 pt-4 pb-8 flex flex-col items-center space-y-2">
+                <a href="index.html" class="mobile-link nav-link page-transition block py-3 text-lg font-medium text-stone-300 w-full text-center hover:bg-white/5 rounded-lg">Home</a>
+                <a href="projects.html" class="mobile-link nav-link page-transition block py-3 text-lg font-medium text-stone-300 w-full text-center hover:bg-white/5 rounded-lg">Projects</a>
+                <a href="gallery.html" class="mobile-link nav-link page-transition block py-3 text-lg font-medium text-stone-300 w-full text-center hover:bg-white/5 rounded-lg">Gallery</a>
+                <a href="index.html#contact" class="mobile-link nav-link anchor-scroll block py-3 text-lg font-medium text-stone-300 w-full text-center hover:bg-white/5 rounded-lg">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="main-content">
+        <div class="ambient-glow">
+            <div class="orb w-[500px] h-[500px] bg-amber-900/30 top-0 left-0 -translate-x-1/4 -translate-y-1/4"></div>
+            <div class="orb w-[600px] h-[600px] bg-violet-900/20 bottom-0 right-0 translate-x-1/4 translate-y-1/4 animation-delay-2000"></div>
+        </div>
+
+        <section class="pt-32 pb-24 px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex justify-between items-end mb-12 reveal-scroll reveal-left">
+                    <div>
+                        <h1 class="text-4xl md:text-5xl font-serif font-bold text-white mb-4">Gallery</h1>
+                        <p class="text-stone-400 max-w-md">
+                            Snippets from lab life, conferences, and occasional thoughts on physics.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Full Gallery Grid -->
+                <div id="all-gallery-grid" class="grid md:grid-cols-3 gap-6">
+                    <!-- JS injected content -->
+                </div>
+            </div>
+        </section>
+
+        <footer class="py-8 bg-dark text-center text-stone-600 text-xs border-t border-white/5 relative z-10">
+            &copy; 2025 Ziao Wang. All rights reserved.
+        </footer>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox-modal" class="fixed inset-0 z-[9999] hidden flex items-center justify-center bg-black/90 backdrop-blur-sm p-4">
+        <div class="relative max-w-4xl w-full bg-[#1c1917] rounded-2xl border border-white/10 overflow-hidden flex flex-col md:flex-row shadow-2xl">
+            <button id="lightbox-close" class="absolute top-4 right-4 z-20 p-2 bg-black/50 rounded-full text-white hover:bg-white/20 transition-colors">
+                <i class="ph ph-x text-xl"></i>
+            </button>
+            <div class="w-full md:w-3/5 h-64 md:h-auto bg-black flex items-center justify-center">
+                <img id="lightbox-img" src="" alt="" class="max-h-full max-w-full object-contain">
+                <div id="lightbox-icon" class="hidden text-stone-700"><i class="ph ph-image text-6xl"></i></div>
+            </div>
+            <div class="w-full md:w-2/5 p-8 flex flex-col justify-center">
+                <span id="lightbox-date" class="text-accentWarm text-xs font-bold uppercase tracking-wider mb-2"></span>
+                <h3 id="lightbox-title" class="text-2xl font-serif font-bold text-white mb-4"></h3>
+                <p id="lightbox-desc" class="text-stone-400 text-sm leading-relaxed mb-6"></p>
+                <div id="lightbox-tags" class="flex flex-wrap gap-2"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/script.js" defer></script>
+</body>
+</html>
