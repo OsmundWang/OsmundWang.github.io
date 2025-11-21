@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             src: "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=800&q=80" 
         },
         {
-            title: "Nature Paper Submission",
+            title: "Paper Submission",
             date: "Oct 2024",
             desc: "Finalizing the draft for our work on Optical DFA. A culmination of two years of hardware-software co-design.",
             tags: ["Research", "Milestone"],
