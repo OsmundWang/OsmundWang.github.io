@@ -1,17 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     /* =========================================
+       CONFIGURATION
+       ========================================= */
+    const HOME_GALLERY_LIMIT = 3; 
+
+    /* =========================================
        DATA SOURCE: PROJECTS
-       Single source of truth for index.html & projects.html
        ========================================= */
     const projectsData = [
         {
             title: "Optical Training of Large Transformers",
             years: "2023 – Present",
             status: "ongoing",
-            highlight: true, // Shows on home page
+            highlight: true, 
+            image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80", 
             tags: ["Optics", "Deep Learning", "Hardware"],
-            desc: "Built a hardware-in-the-loop pipeline leveraging an optical processor to train large Transformer families (1B+ parameters) via Direct Feedback Alignment (ODFA). Investigated compute scaling laws and confirmed optical merits in energy and throughput.",
+            bullets: [
+                "Training 1B+ parameter models via Direct Feedback Alignment.",
+                "Hardware-in-the-loop optical processor pipeline.",
+                "Investigating energy and throughput scaling laws."
+            ],
+            desc: "We propose and implement a hardware-in-the-loop pipeline leveraging an optical processor to train large Transformer families (1B+ parameters) via Direct Feedback Alignment (ODFA). Unlike standard backpropagation, this method allows us to bypass the digital memory bottleneck. <br><br> Our results confirm optical merits in energy efficiency and throughput, paving the way for next-generation photonic accelerators.",
             links: [
                 { text: "Nature (Under Review)", url: "assets/docs/main_text.pdf", icon: "ph-file-pdf" }
             ]
@@ -21,16 +31,27 @@ document.addEventListener('DOMContentLoaded', () => {
             years: "2023",
             status: "completed",
             highlight: false,
+            image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80",
             tags: ["Stat Phys", "Theory", "Optics"],
-            desc: "Developed a statistical-physics framework for analyzing Restricted Boltzmann Machines (RBMs) in optical settings. Used energy-based probabilistic modelling and the replica method to derive robust design principles.",
+            bullets: [
+                "Energy-based probabilistic modelling of optical systems.",
+                "Used Replica Method to derive design principles.",
+                "Bridged thermodynamics and neural network theory."
+            ],
+            desc: "Developed a statistical-physics framework for analyzing Restricted Boltzmann Machines (RBMs) in optical settings. By treating the optical system as a spin glass, we used energy-based probabilistic modelling and the replica method to derive robust design principles that account for physical noise and component variability.",
             links: []
         },
         {
-            title: "Reconfigurable Optical Neural Nets at Scale",
+            title: "Reconfigurable Optical Neural Nets",
             years: "2022 – 2024",
             status: "completed",
             highlight: true,
+            image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80",
             tags: ["Optics", "Experiment"],
+            bullets: [
+                "Scaled constraint-aware ONNs and performed in-situ architecture search under hardware limits.",
+                "Physics-aware training with measured non-idealities."
+            ],
             desc: "Scaled constraint-aware ONNs and performed in-situ architecture search under hardware limits. Implemented physics-aware training with measured non-idealities, bridging the gap to digital baselines.",
             links: []
         },
@@ -39,8 +60,13 @@ document.addEventListener('DOMContentLoaded', () => {
             years: "2018 – 2021",
             status: "completed",
             highlight: false,
+            image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=800&q=80",
             tags: ["Bayesian", "Physics"],
-            desc: "Built Bayesian neural networks with uncertainty quantification to fuse noisy and divergent datasets in nuclear physics. Designed priors to enforce domain constraints.",
+            bullets: [
+                "Bayesian Neural Networks with uncertainty quantification.",
+                "Fused noisy and divergent nuclear physics datasets."
+            ],
+            desc: "Built Bayesian neural networks with uncertainty quantification to fuse noisy and divergent datasets in nuclear physics.",
             links: []
         },
         {
@@ -48,7 +74,12 @@ document.addEventListener('DOMContentLoaded', () => {
             years: "Ongoing",
             status: "ongoing",
             highlight: false,
+            image: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&w=800&q=80",
             tags: ["Systems", "Raspberry Pi"],
+            bullets: [
+                "Custom control boards for optical steering.",
+                "Local computing infrastructure design."
+            ],
             desc: "Designing custom control boards and local computing infrastructure to synchronize and steer complex free-space optical experiments for the research group.",
             links: []
         }
@@ -56,13 +87,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* =========================================
        DATA SOURCE: GALLERY
-       Single source of truth for index.html & gallery.html
        ========================================= */
     const galleryData = [
         {
             title: "Optical Lab Setup",
             date: "Nov 2024",
-            desc: "Calibrating the DMD for the new large-scale transformer experiments. The alignment requires micron-level precision.",
+            desc: "Calibrating the DMD for the new large-scale transformer experiments.",
             tags: ["Lab", "Optics"],
             type: "image", 
             src: "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=800&q=80" 
@@ -70,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: "Nature Paper Submission",
             date: "Oct 2024",
-            desc: "Finalizing the draft for our work on Optical DFA. A culmination of two years of hardware-software co-design.",
+            desc: "Finalizing the draft for our work on Optical DFA.",
             tags: ["Research", "Milestone"],
             type: "text", 
             src: null 
@@ -78,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: "Conference in Lyon",
             date: "Sep 2024",
-            desc: "Presenting our poster on Physics-Constrained Deep Learning. Great discussions on the thermodynamics of learning.",
+            desc: "Presenting our poster on Physics-Constrained Deep Learning.",
             tags: ["Travel", "Conference"],
             type: "image",
             src: "https://images.unsplash.com/photo-1544531586-fde5298cdd40?auto=format&fit=crop&w=800&q=80"
@@ -86,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: "Early Prototype",
             date: "Feb 2024",
-            desc: "First light on the new optical breadboard. Testing the scattering medium response.",
+            desc: "First light on the new optical breadboard.",
             tags: ["Lab", "Prototype"],
             type: "image",
             src: "https://images.unsplash.com/photo-1517420704952-d9f397176ad2?auto=format&fit=crop&w=800&q=80"
@@ -96,65 +126,59 @@ document.addEventListener('DOMContentLoaded', () => {
     /* =========================================
        RENDERING LOGIC
        ========================================= */
-
-    // Helper: Create Project Card HTML
+    
+    // Projects
     function createProjectCard(project, index) {
-        const tagsHtml = project.tags.map(t => 
-            `<span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-xs text-stone-400">${t}</span>`
-        ).join('');
-
-        const linksHtml = project.links && project.links.length > 0 
-            ? `<div class="mt-4 flex gap-3 border-t border-white/5 pt-4">
-                ${project.links.map(l => `
-                    <a href="${l.url}" target="_blank" class="flex items-center gap-2 text-xs font-bold text-accentWarm hover:text-white transition-colors">
-                        <i class="ph ${l.icon}"></i> ${l.text}
-                    </a>
-                `).join('')}
-               </div>` 
-            : '';
-
-        // Status badge style
         const isOngoing = project.status === 'ongoing';
-        const statusColor = isOngoing ? 'text-green-400 bg-green-400/10' : 'text-stone-500 bg-stone-500/10';
+        const statusBadge = isOngoing 
+            ? '<span class="px-2 py-0.5 rounded bg-green-500/10 text-green-400 text-[10px] font-bold uppercase tracking-wider">Ongoing</span>'
+            : '<span class="px-2 py-0.5 rounded bg-stone-500/10 text-stone-500 text-[10px] font-bold uppercase tracking-wider">Completed</span>';
+        const bulletsHtml = project.bullets.map(b => `<li>${b}</li>`).join('');
 
         return `
-            <div class="project-card glass p-8 rounded-3xl border border-white/10 reveal-scroll reveal-up hover:bg-white/5 transition-colors group relative overflow-hidden" style="transition-delay: ${index * 100}ms">
-                <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
-                    <div>
-                        <div class="flex items-center gap-3 mb-2">
-                            <span class="px-2 py-0.5 rounded-full text-[10px] uppercase tracking-wider font-bold ${statusColor}">${project.years}</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white group-hover:text-accent transition-colors">${project.title}</h3>
+            <article class="project-card glass rounded-3xl overflow-hidden border border-white/10 reveal-scroll reveal-up hover:bg-white/5 transition-colors group relative" 
+                     data-index="${index}" style="transition-delay: ${index * 100}ms">
+                <div class="project-thumb-container relative w-full h-[200px] overflow-hidden bg-[#1c1917]">
+                    <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+                    <div class="absolute top-4 left-4 z-10 glass px-3 py-1 rounded-full backdrop-blur-md">
+                        <span class="text-xs font-bold text-white">${project.years}</span>
                     </div>
                 </div>
-                
-                <p class="text-stone-400 leading-relaxed mb-6 max-w-3xl">
-                    ${project.desc}
-                </p>
-
-                <div class="flex flex-wrap items-center justify-between gap-4 mt-auto">
-                    <div class="flex gap-2 flex-wrap">${tagsHtml}</div>
-                    ${linksHtml}
+                <div class="p-8 flex-1 flex flex-col">
+                    <div class="mb-4">
+                        <div class="flex items-center gap-3 mb-2">${statusBadge}</div>
+                        <h3 class="text-2xl font-serif font-bold text-white group-hover:text-accentWarm transition-colors">${project.title}</h3>
+                    </div>
+                    <ul class="project-bullets mb-6 list-none m-0 p-0 space-y-2">
+                        ${project.bullets.map(b => `<li class="relative pl-5 text-sm text-stone-400 before:content-['•'] before:absolute before:left-0 before:text-accentWarm before:font-bold">${b}</li>`).join('')}
+                    </ul>
+                    <div class="mt-auto pt-6 border-t border-white/5 flex justify-between items-center">
+                        <div class="flex gap-2">
+                             ${project.tags.slice(0, 2).map(t => `<span class="text-xs text-stone-500 bg-white/5 px-2 py-1 rounded">${t}</span>`).join('')}
+                        </div>
+                        <span class="text-sm font-medium text-accentWarm flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-[-10px] group-hover:translate-x-0 duration-300">
+                            Read more <i class="ph ph-arrow-right"></i>
+                        </span>
+                    </div>
                 </div>
-            </div>
+            </article>
         `;
     }
 
-    // 1. Render Home Projects (Highlight only)
     const homeProjectsList = document.getElementById('home-projects-list');
     if (homeProjectsList) {
         const featured = projectsData.filter(p => p.highlight);
-        homeProjectsList.innerHTML = featured.map((p, i) => createProjectCard(p, i)).join('');
+        homeProjectsList.className = "grid md:grid-cols-2 lg:grid-cols-3 gap-8"; 
+        homeProjectsList.innerHTML = featured.map((p, i) => createProjectCard(p, projectsData.indexOf(p))).join('');
     }
 
-    // 2. Render All Projects (Grouped by status loosely for simplicity, or just list all)
     const allProjectsList = document.getElementById('all-projects-list');
     if (allProjectsList) {
-        // You could group them, but a clean list sorted by date/importance is often better for this style
+        allProjectsList.className = "grid md:grid-cols-2 gap-8";
         allProjectsList.innerHTML = projectsData.map((p, i) => createProjectCard(p, i)).join('');
     }
 
-    // Helper: Create Gallery Card HTML
+    // Gallery
     function createGalleryCard(item, index) {
         return `
             <div class="gallery-card glass rounded-2xl overflow-hidden border border-white/5 group interactable cursor-pointer reveal-scroll reveal-up" 
@@ -180,126 +204,168 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
-    // 3. Render Home Gallery (Limit 3)
     const homeGalleryGrid = document.getElementById('home-gallery-grid');
     if (homeGalleryGrid) {
-        const recent = galleryData.slice(0, 3);
+        const recent = galleryData.slice(0, HOME_GALLERY_LIMIT);
         homeGalleryGrid.innerHTML = recent.map((item, i) => createGalleryCard(item, i)).join('');
-        attachGalleryListeners();
     }
 
-    // 4. Render Full Gallery
     const allGalleryGrid = document.getElementById('all-gallery-grid');
     if (allGalleryGrid) {
         allGalleryGrid.innerHTML = galleryData.map((item, i) => createGalleryCard(item, i)).join('');
-        attachGalleryListeners();
     }
 
     // Lightbox Logic
     const lightbox = document.getElementById('lightbox-modal');
-    function attachGalleryListeners() {
+    if (lightbox) {
         document.querySelectorAll('.gallery-card').forEach(card => {
-            card.addEventListener('click', () => {
-                openLightbox(parseInt(card.dataset.index));
-            });
+            card.addEventListener('click', () => openLightbox('gallery', parseInt(card.dataset.index)));
         });
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('click', () => openLightbox('project', parseInt(card.dataset.index)));
+        });
+
+        const closeBtn = document.getElementById('lightbox-close');
+        if(closeBtn) closeBtn.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
+        document.addEventListener('keydown', (e) => { if (e.key === "Escape" && !lightbox.classList.contains('hidden')) closeLightbox(); });
     }
 
-    function openLightbox(index) {
+    function closeLightbox() { if(lightbox) lightbox.classList.add('hidden'); }
+
+    function openLightbox(type, index) {
         if (!lightbox) return;
-        const item = galleryData[index];
-        document.getElementById('lightbox-title').innerText = item.title;
-        document.getElementById('lightbox-date').innerText = item.date;
-        document.getElementById('lightbox-desc').innerText = item.desc;
-        
-        const imgEl = document.getElementById('lightbox-img');
-        const iconEl = document.getElementById('lightbox-icon');
-        
-        if (item.src) {
-            imgEl.src = item.src;
-            imgEl.classList.remove('hidden');
-            iconEl.classList.add('hidden');
-        } else {
-            imgEl.classList.add('hidden');
-            iconEl.classList.remove('hidden');
+        let data = {};
+        if (type === 'gallery') {
+            const item = galleryData[index];
+            data = { title: item.title, subtitle: item.date, desc: item.desc, tags: item.tags, img: item.src, links: [] };
+        } else if (type === 'project') {
+            const item = projectsData[index];
+            data = { title: item.title, subtitle: item.years, desc: item.desc, tags: item.tags, img: item.image, links: item.links || [] };
         }
 
-        const tagContainer = document.getElementById('lightbox-tags');
-        tagContainer.innerHTML = item.tags.map(t => `<span class="px-2 py-1 bg-white/10 rounded text-[10px] text-stone-300 uppercase">${t}</span>`).join('');
-
+        document.getElementById('lightbox-title').innerText = data.title;
+        document.getElementById('lightbox-date').innerText = data.subtitle;
+        document.getElementById('lightbox-desc').innerHTML = data.desc;
+        const imgEl = document.getElementById('lightbox-img');
+        const iconEl = document.getElementById('lightbox-icon');
+        if (data.img) { imgEl.src = data.img; imgEl.classList.remove('hidden'); if(iconEl) iconEl.classList.add('hidden'); }
+        else { imgEl.classList.add('hidden'); if(iconEl) iconEl.classList.remove('hidden'); }
+        document.getElementById('lightbox-tags').innerHTML = data.tags.map(t => `<span class="px-2 py-1 bg-white/10 rounded text-[10px] text-stone-300 uppercase">${t}</span>`).join('');
+        
+        const linkContainer = document.getElementById('lightbox-links');
+        if (linkContainer) {
+            if (data.links.length > 0) {
+                linkContainer.classList.remove('hidden');
+                linkContainer.innerHTML = data.links.map(l => `<a href="${l.url}" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-accentWarm text-dark font-bold rounded-lg hover:bg-white transition-colors text-xs uppercase tracking-wider shadow-lg"><i class="ph ${l.icon} text-lg"></i> ${l.text}</a>`).join('');
+            } else {
+                linkContainer.classList.add('hidden');
+                linkContainer.innerHTML = '';
+            }
+        }
         lightbox.classList.remove('hidden');
     }
 
-    // Close Lightbox Events
-    if (lightbox) {
-        const closeBtn = document.getElementById('lightbox-close');
-        if(closeBtn) closeBtn.addEventListener('click', () => lightbox.classList.add('hidden'));
-        lightbox.addEventListener('click', (e) => {
-            if(e.target === lightbox) lightbox.classList.add('hidden');
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === "Escape" && !lightbox.classList.contains('hidden')) {
-                lightbox.classList.add('hidden');
-            }
-        });
-    }
-
 
     /* =========================================
-       NAVIGATION & TRANSITIONS
+       UNIFIED NAVIGATION & ANIMATION SYSTEM
        ========================================= */
     const wiper = document.getElementById('page-wiper');
     const body = document.body;
+    const mobileMenu = document.getElementById('mobile-menu');
 
-    // Internal Anchor Scrolling (Smooth)
-    document.querySelectorAll('.anchor-scroll').forEach(link => {
+    // 1. Select all navigation links (Menu items + Page transitions)
+    // Note: We target 'nav-link' (main menu) and 'page-transition' (internal buttons like 'View All')
+    const navLinks = document.querySelectorAll('.nav-link, .page-transition');
+
+    navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            const href = link.getAttribute('href'); // e.g. index.html#about or #about
-            const targetId = href.includes('#') ? href.split('#')[1] : null;
-            if (targetId) {
-                const targetEl = document.getElementById(targetId);
-                if (targetEl) {
-                    e.preventDefault();
-                    // If mobile menu is open, close it
-                    document.getElementById('mobile-menu').classList.add('hidden');
-                    targetEl.scrollIntoView({ behavior: 'smooth' });
+            const href = link.getAttribute('href');
+            
+            // Ignore external links or empty links
+            if (!href || href.startsWith('http') || href.startsWith('mailto:')) return;
+
+            e.preventDefault();
+
+            // Close mobile menu if open
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+
+            // Determine if target is on the CURRENT page
+            // Logic: If href is just "#id" OR if it is "index.html#id" and we are currently on index.html
+            const isIndexPage = window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/');
+            const targetIsIndex = href.includes('index.html') || href.startsWith('#');
+            
+            let isInternalNav = false;
+            let targetId = null;
+
+            if (href.startsWith('#')) {
+                isInternalNav = true;
+                targetId = href.substring(1);
+            } else if (targetIsIndex && isIndexPage) {
+                // We are on index, target is index.html...
+                if (href.includes('#')) {
+                    isInternalNav = true;
+                    targetId = href.split('#')[1];
+                } else {
+                    // Just "index.html" -> scroll to top
+                    isInternalNav = true;
+                    targetId = 'top'; 
                 }
+            }
+
+            // ACTION: Internal Scroll vs Page Navigation
+            if (isInternalNav) {
+                handleInternalNavigation(targetId);
+            } else {
+                handlePageNavigation(href);
             }
         });
     });
 
-    // Page Transition Logic (Wipe on Link Click)
-    document.querySelectorAll('.page-transition').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetUrl = link.getAttribute('href');
-            
-            // 1. Start Wipe In
-            wiper.classList.remove('wiping-out');
-            wiper.classList.add('wiping-in');
-            body.classList.add('transitioning');
+    function handleInternalNavigation(targetId) {
+        // 1. Wipe In (Cover Screen)
+        wiper.classList.remove('wiping-out');
+        wiper.classList.add('wiping-in');
+        body.classList.add('transitioning');
 
-            // 2. Wait & Navigate
+        // 2. Wait for cover, then Scroll, then Wipe Out
+        setTimeout(() => {
+            if (targetId === 'top') {
+                window.scrollTo({ top: 0, behavior: 'instant' }); // Instant because hidden
+            } else {
+                const el = document.getElementById(targetId);
+                if (el) el.scrollIntoView({ behavior: 'instant' });
+            }
+
+            // 3. Wipe Out (Reveal)
+            // We need a small delay to ensure scroll rendering is done
             setTimeout(() => {
-                window.location.href = targetUrl;
-            }, 600); 
-        });
-    });
+                wiper.classList.remove('wiping-in');
+                wiper.classList.add('wiping-out');
+                body.classList.remove('transitioning');
+            }, 100);
 
-    // Entrance Animation (Optional: Wipe Out on Load)
-    // Note: Browser refresh naturally handles a "fresh" look, but we can trigger a wipe-out if we want.
-    // For now, we stick to CSS scroll reveals which handle entrance gracefully.
+        }, 600); // Match CSS transition time
+    }
 
+    function handlePageNavigation(targetUrl) {
+        // 1. Wipe In (Cover Screen)
+        wiper.classList.remove('wiping-out');
+        wiper.classList.add('wiping-in');
+        body.classList.add('transitioning');
+
+        // 2. Navigate away
+        setTimeout(() => {
+            window.location.href = targetUrl;
+        }, 600);
+    }
 
     /* =========================================
-       SCROLL REVEAL
+       SCROLL REVEAL & UTILITIES
        ========================================= */
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1 
-    };
-
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
     const scrollObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -308,65 +374,88 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, observerOptions);
-
-    // Re-observe elements after rendering
     setTimeout(() => {
         document.querySelectorAll('.reveal-scroll').forEach(el => scrollObserver.observe(el));
     }, 100);
 
-
-    /* =========================================
-       UI UTILITIES
-       ========================================= */
-    
-    // Custom Cursor
     const cursorDot = document.getElementById('cursor-dot');
     const cursorOutline = document.getElementById('cursor-outline');
     const isFinePointer = window.matchMedia('(pointer: fine)').matches;
-
     if (isFinePointer && cursorDot && cursorOutline) {
-        cursorDot.style.display = 'block';
-        cursorOutline.style.display = 'block';
+        cursorDot.style.display = 'block'; cursorOutline.style.display = 'block';
         let cx = 0, cy = 0, ox = 0, oy = 0;
-
-        document.addEventListener('mousemove', e => { 
-            cx = e.clientX; cy = e.clientY; 
-            cursorDot.style.top = cy+'px'; cursorDot.style.left = cx+'px'; 
-        });
-
-        const animateCursor = () => {
-            ox += (cx - ox) * 0.15; oy += (cy - oy) * 0.15;
-            cursorOutline.style.top = oy+'px'; cursorOutline.style.left = ox+'px';
-            requestAnimationFrame(animateCursor);
-        };
+        document.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; cursorDot.style.top = cy+'px'; cursorDot.style.left = cx+'px'; });
+        const animateCursor = () => { ox += (cx - ox) * 0.15; oy += (cy - oy) * 0.15; cursorOutline.style.top = oy+'px'; cursorOutline.style.left = ox+'px'; requestAnimationFrame(animateCursor); };
         animateCursor();
-
         document.body.addEventListener('mouseover', (e) => {
-            if (e.target.closest('.interactable, a, button')) {
-                document.body.classList.add('hovering');
-            } else {
-                document.body.classList.remove('hovering');
-            }
+            if (e.target.closest('.interactable, a, button, .project-card, .gallery-card')) document.body.classList.add('hovering');
+            else document.body.classList.remove('hovering');
         });
     }
     
-    // Navbar Glass Effect
     const navbar = document.getElementById('navbar');
     if(navbar) {
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                navbar.classList.add('shadow-lg', 'bg-dark/90');
-            } else {
-                navbar.classList.remove('shadow-lg', 'bg-dark/90');
-            }
+            if (window.scrollY > 20) navbar.classList.add('shadow-lg', 'bg-dark/90');
+            else navbar.classList.remove('shadow-lg', 'bg-dark/90');
         });
     }
 
-    // Mobile Menu
     const menuBtn = document.getElementById('mobile-menu-btn');
     if(menuBtn) {
         menuBtn.addEventListener('click', () => {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });
     }
+
+    /* =========================================
+       SCROLL PROGRESS & BACK TO TOP (Index Only)
+       ========================================= */
+    
+    // Check if we are on index page
+    const isIndexPage = window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/');
+
+    if (isIndexPage) {
+        const progressBar = document.getElementById('scroll-progress');
+        const backToTopBtn = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            // 1. Progress Bar Logic
+            if (progressBar) {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                progressBar.style.width = scrolled + "%";
+            }
+
+            // 2. Back to Top Visibility
+            if (backToTopBtn) {
+                if (window.scrollY > 500) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            }
+        });
+
+        // Back to Top Click Handler
+        if (backToTopBtn) {
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+    }
+
+    /* =========================================
+       UI CLEANUP (Remove Focus Box)
+       ========================================= */
+    // When a nav link is clicked, remove focus to kill the outline
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            link.blur(); // Removes focus immediately after click
+        });
+    });
 });

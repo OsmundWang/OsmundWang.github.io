@@ -56,7 +56,7 @@
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex items-center justify-between h-20">
-                <a href="index.html" class="flex items-center gap-2 nav-link page-transition interactable group">
+                <a href="index.html" class="flex items-center gap-2 nav-link interactable group">
                     <span class="text-2xl font-serif font-bold text-white tracking-tight">
                         ZW<span class="text-accentWarm">.</span>
                     </span>
@@ -64,12 +64,12 @@
 
                 <div class="hidden lg:block">
                     <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="index.html" class="nav-item nav-link page-transition interactable">Home</a>
-                        <a href="index.html#about" class="nav-item nav-link anchor-scroll interactable">About</a>
-                        <a href="projects.html" class="nav-item nav-link page-transition interactable">Projects</a>
-                        <a href="gallery.html" class="nav-item nav-link page-transition interactable active-page">Gallery</a>
-                        <a href="index.html#experience" class="nav-item nav-link anchor-scroll interactable">Experience</a>
-                        <a href="index.html#contact" class="px-5 py-2.5 rounded-full border border-white/10 hover:bg-white/5 text-white transition-all text-sm font-medium nav-link anchor-scroll interactable">Contact</a>
+                        <a href="index.html" class="nav-item nav-link interactable">Home</a>
+                        <a href="index.html#about" class="nav-item nav-link interactable">About</a>
+                        <a href="index.html#home-projects-section" class="nav-item nav-link interactable">Projects</a>
+                        <a href="index.html#gallery-preview" class="nav-item nav-link interactable active-page">Gallery</a>
+                        <a href="index.html#experience" class="nav-item nav-link interactable">Experience</a>
+                        <a href="index.html#contact" class="px-5 py-2.5 rounded-full border border-white/10 hover:bg-white/5 text-white transition-all text-sm font-medium nav-link interactable">Contact</a>
                     </div>
                 </div>
                 
@@ -83,12 +83,12 @@
         
         <div id="mobile-menu" class="hidden lg:hidden glass border-t border-white/5 absolute w-full bg-dark/95 backdrop-blur-xl">
             <div class="px-4 pt-4 pb-8 flex flex-col items-center space-y-2">
-                <a href="index.html" class="mobile-link nav-link page-transition block py-3 text-lg font-medium text-stone-300 w-full text-center hover:bg-white/5 rounded-lg">Home</a>
-                <a href="index.html#about" class="mobile-link nav-link anchor-scroll block py-3 text-lg font-medium text-stone-300 w-full text-center hover:bg-white/5 rounded-lg">About</a>
-                <a href="projects.html" class="mobile-link nav-link page-transition block py-3 text-lg font-medium text-stone-300 w-full text-center hover:bg-white/5 rounded-lg">Projects</a>
-                <a href="gallery.html" class="mobile-link nav-link page-transition block py-3 text-lg font-medium text-stone-300 w-full text-center hover:bg-white/5 rounded-lg">Gallery</a>
-                <a href="index.html#experience" class="mobile-link nav-link anchor-scroll block py-3 text-lg font-medium text-stone-300 w-full text-center hover:bg-white/5 rounded-lg">Experience</a>
-                <a href="index.html#contact" class="mobile-link nav-link anchor-scroll block py-3 text-lg font-medium text-stone-300 w-full text-center hover:bg-white/5 rounded-lg">Contact</a>
+                <a href="index.html" class="mobile-link nav-link block py-3 text-lg font-medium text-stone-300 w-full text-center hover:bg-white/5 rounded-lg">Home</a>
+                <a href="index.html#about" class="mobile-link nav-link block py-3 text-lg font-medium text-stone-300 w-full text-center hover:bg-white/5 rounded-lg">About</a>
+                <a href="index.html#home-projects-section" class="mobile-link nav-link block py-3 text-lg font-medium text-stone-300 w-full text-center hover:bg-white/5 rounded-lg">Projects</a>
+                <a href="index.html#gallery-preview" class="mobile-link nav-link block py-3 text-lg font-medium text-stone-300 w-full text-center hover:bg-white/5 rounded-lg">Gallery</a>
+                <a href="index.html#experience" class="mobile-link nav-link block py-3 text-lg font-medium text-stone-300 w-full text-center hover:bg-white/5 rounded-lg">Experience</a>
+                <a href="index.html#contact" class="mobile-link nav-link block py-3 text-lg font-medium text-stone-300 w-full text-center hover:bg-white/5 rounded-lg">Contact</a>
             </div>
         </div>
     </nav>
@@ -128,15 +128,21 @@
             <button id="lightbox-close" class="absolute top-4 right-4 z-20 p-2 bg-black/50 rounded-full text-white hover:bg-white/20 transition-colors">
                 <i class="ph ph-x text-xl"></i>
             </button>
+
             <div class="w-full md:w-3/5 h-64 md:h-auto bg-black flex items-center justify-center">
-                <img id="lightbox-img" src="" alt="" class="max-h-full max-w-full object-contain">
+                <img id="lightbox-img" src="" alt="" class="max-h-full max-w-full object-contain hidden">
                 <div id="lightbox-icon" class="hidden text-stone-700"><i class="ph ph-image text-6xl"></i></div>
             </div>
-            <div class="w-full md:w-2/5 p-8 flex flex-col justify-center">
+
+            <div class="w-full md:w-2/5 p-8 flex flex-col justify-center overflow-y-auto max-h-[80vh]">
                 <span id="lightbox-date" class="text-accentWarm text-xs font-bold uppercase tracking-wider mb-2"></span>
                 <h3 id="lightbox-title" class="text-2xl font-serif font-bold text-white mb-4"></h3>
-                <p id="lightbox-desc" class="text-stone-400 text-sm leading-relaxed mb-6"></p>
-                <div id="lightbox-tags" class="flex flex-wrap gap-2"></div>
+                
+                <div id="lightbox-desc" class="text-stone-400 text-sm leading-relaxed mb-6 space-y-4"></div>
+                
+                <div id="lightbox-links" class="flex flex-wrap gap-3 mb-6 hidden"></div>
+                
+                <div id="lightbox-tags" class="flex flex-wrap gap-2 mt-auto"></div>
             </div>
         </div>
     </div>
