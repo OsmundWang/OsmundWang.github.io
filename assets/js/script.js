@@ -10,20 +10,35 @@ document.addEventListener('DOMContentLoaded', () => {
        ========================================= */
     const projectsData = [
         {
+            title: "Optical Forward and Backward",
+            years: "2025 – Present",
+            status: "ongoing",
+            highlight: false, 
+            image: "assets/img/orbm.png", 
+            tags: ["Optics", "Deep Learning", "Hardware"],
+            bullets: [
+                "Bidirectional Digital Optical Phase Conjugation (DOPC) through a multimode fibre.",
+                "Unify harware bothways with single way device.",
+                "To design as a optical forward/backward engine for deep learning."
+            ],
+            desc: "We are developing a bidirectional Digital Optical Phase Conjugation (DOPC) platform that can launch and recover complex fields on both forward and backward paths through a scattering medium / multimode fibre. <br><br> This enables a unified hardware engine for optical forward and backward passes in deep learning, hopefully simplifying system design and enhancing scalability for large-scale optical neural networks.",
+            links: []
+        },
+        {
             title: "Optical Training of Large Transformers",
             years: "2023 – Present",
             status: "ongoing",
             highlight: true, 
-            image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80", 
-            tags: ["Optics", "Deep Learning", "Hardware"],
+            image: "assets/img/odfa.png", 
+            tags: ["Optics", "DeepLearning", "Hardware"],
             bullets: [
-                "Training 1B+ parameter models via Direct Feedback Alignment.",
-                "Hardware-in-the-loop optical processor pipeline.",
-                "Investigating energy and throughput scaling laws."
+                "Training 1B+ parameter models via Optics.",
+                "Hardware-in-the-loop optical processing Transformer families.",
+                "Speed scaling law favors optics."
             ],
-            desc: "We propose and implement a hardware-in-the-loop pipeline leveraging an optical processor to train large Transformer families (1B+ parameters) via Direct Feedback Alignment (ODFA). Unlike standard backpropagation, this method allows us to bypass the digital memory bottleneck. <br><br> Our results confirm optical merits in energy efficiency and throughput, paving the way for next-generation photonic accelerators.",
+            desc: "We propose and implement a hardware-in-the-loop pipeline leveraging an optical processor to train large Transformer families (1B+ parameters) via Optical Direct Feedback Alignment (ODFA). Unlike standard backpropagation, this method allows us to bypass the digital memory bottleneck. <br><br> Our results confirm optical merits in energy efficiency and throughput, paving the way for next-generation photonic accelerators.",
             links: [
-                { text: "Nature (Under Review)", url: "assets/docs/main_text.pdf", icon: "ph-file-pdf" }
+                { text: "Under Review", url: "https://arxiv.org/html/2409.12965v2", icon: "ph-file-pdf" }
             ]
         },
         {
@@ -32,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             status: "completed",
             highlight: false,
             image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80",
-            tags: ["Stat Phys", "Theory", "Optics"],
+            tags: ["Stat-Phys", "Theory", "Optics"],
             bullets: [
                 "Energy-based probabilistic modelling of optical systems.",
                 "Used Replica Method to derive design principles.",
@@ -46,43 +61,29 @@ document.addEventListener('DOMContentLoaded', () => {
             years: "2022 – 2024",
             status: "completed",
             highlight: true,
-            image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80",
+            image: "assets/img/ornn.png",
             tags: ["Optics", "Experiment"],
             bullets: [
                 "Scaled constraint-aware ONNs and performed in-situ architecture search under hardware limits.",
                 "Physics-aware training with measured non-idealities."
             ],
             desc: "Scaled constraint-aware ONNs and performed in-situ architecture search under hardware limits. Implemented physics-aware training with measured non-idealities, bridging the gap to digital baselines.",
-            links: []
+            links: [{ text: "Under Review", url: "", icon: "ph-file-pdf" }]
         },
         {
             title: "Bayesian Evaluation for Noisy Physics Data",
             years: "2018 – 2021",
             status: "completed",
-            highlight: false,
-            image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=800&q=80",
-            tags: ["Bayesian", "Physics"],
+            highlight: true,
+            image: "assets/img/bayes.png",
+            tags: ["Bayesian", "Physics", "DeepLearning"],
             bullets: [
                 "Bayesian Neural Networks with uncertainty quantification.",
                 "Fused noisy and divergent nuclear physics datasets."
             ],
             desc: "Built Bayesian neural networks with uncertainty quantification to fuse noisy and divergent datasets in nuclear physics.",
-            links: []
+            links: [{ text: "PRL", url: "https://link.aps.org/doi/10.1103/PhysRevLett.123.122501", icon: "ph-file-pdf" }]
         },
-        {
-            title: "Lab Infrastructure & Hardware Control",
-            years: "Ongoing",
-            status: "ongoing",
-            highlight: false,
-            image: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&w=800&q=80",
-            tags: ["Systems", "Raspberry Pi"],
-            bullets: [
-                "Custom control boards for optical steering.",
-                "Local computing infrastructure design."
-            ],
-            desc: "Designing custom control boards and local computing infrastructure to synchronize and steer complex free-space optical experiments for the research group.",
-            links: []
-        }
     ];
 
     /* =========================================
