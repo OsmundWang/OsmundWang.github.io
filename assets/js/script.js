@@ -91,36 +91,36 @@ document.addEventListener('DOMContentLoaded', () => {
        ========================================= */
     const galleryData = [
         {
-            title: "Optical Lab Setup",
-            date: "Nov 2024",
-            desc: "Calibrating the DMD for the new large-scale transformer experiments.",
-            tags: ["Lab", "Optics"],
+            title: "Talk at HKU",
+            date: "Sept 2025",
+            desc: "Thanks for the invitation to speak at HKU.",
+            tags: ["Travel", "Optics"],
             type: "image", 
-            src: "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=800&q=80" 
+            src: "assets/img/2025_9_hku.jpg" 
         },
         {
-            title: "Nature Paper Submission",
-            date: "Oct 2024",
-            desc: "Finalizing the draft for our work on Optical DFA.",
+            title: "Best poster award at MLPH",
+            date: "Sept 2024",
+            desc: "Received the best poster award for our work on ODFA.",
             tags: ["Research", "Milestone"],
-            type: "text", 
-            src: null 
+            type: "image", 
+            src: "assets/img/2024_9_como.jpg"
         },
         {
-            title: "Conference in Lyon",
-            date: "Sep 2024",
-            desc: "Presenting our poster on Physics-Constrained Deep Learning.",
+            title: "JRPS conference in Lyon",
+            date: "June 2024",
+            desc: "Presenting pre-release our work on optical training.",
             tags: ["Travel", "Conference"],
             type: "image",
-            src: "https://images.unsplash.com/photo-1544531586-fde5298cdd40?auto=format&fit=crop&w=800&q=80"
+            src: "assets/img/2024_7_lyon.jpg"
         },
         {
-            title: "Early Prototype",
-            date: "Feb 2024",
-            desc: "First light on the new optical breadboard.",
-            tags: ["Lab", "Prototype"],
+            title: "Graduation Day",
+            date: "July 2021",
+            desc: "Receive my bachelor in Physics/Economics from Peking University!",
+            tags: ["Milestone", "Graduation"],
             type: "image",
-            src: "https://images.unsplash.com/photo-1517420704952-d9f397176ad2?auto=format&fit=crop&w=800&q=80"
+            src: "assets/img/2021_grad.jpg"
         }
     ];
 
